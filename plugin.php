@@ -3,7 +3,7 @@
 Plugin Name: Comment Notifier
 Plugin URI: http://www.satollo.net/plugins/comment-notifier
 Description: Enable reader to subscribe to post's comments to follow discussions (increase blog traffic and participation)
-Version: 2.2.9
+Version: 2.3.0
 Author: Stefano Lissa
 Author URI: http://www.satollo.net
 */

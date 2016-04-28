@@ -48,13 +48,15 @@ if (wp_verify_nonce($_POST['_wpnonce'], 'update-comment-notifier-options')) {
 
 // Removes a single email for all subscriptions
 if (isset($_POST['remove_email'])) {
-    if (!wp_verify_nonce($_POST['_wpnonce'], 'remove_email')) die('Securety violated');
+    if (!wp_verify_nonce($_POST['_wpnonce'], 'remove_email'))
+        die('Securety violated');
     $email = strtolower(trim($_POST['email']));
     $wpdb->query($wpdb->prepare("delete from " . $wpdb->prefix . "comment_notifier where email=%s", $email));
 }
 
 if (isset($_POST['remove'])) {
-    if (!wp_verify_nonce($_POST['_wpnonce'], 'remove')) die('Securety violated');
+    if (!wp_verify_nonce($_POST['_wpnonce'], 'remove'))
+        die('Securety violated');
     $query = "delete from " . $wpdb->prefix . "comment_notifier where id in (" . implode(',', $_POST['s']) . ")";
     $wpdb->query($query);
 }
@@ -65,7 +67,7 @@ if (isset($_POST['remove'])) {
     {
         var m = document.getElementById("message").value;
         m = m.replace("{content}", "I totally agree with you opinion about Satollo, he's really...");
-        var h = window.open("", "cmnt","status=0,toolbar=0,height=400,width=550");
+        var h = window.open("", "cmnt", "status=0,toolbar=0,height=400,width=550");
         var d = h.document;
         d.write('<html><head><title>Email preview</title>');
         d.write('</head><body>');
@@ -83,27 +85,26 @@ if (isset($_POST['remove'])) {
 
 <div class="wrap">
 
-    <div id="satollo-header">
-        <a href="http://www.satollo.net/plugins/comment-notifier" target="_blank">Get Help</a>
-        <a href="http://www.satollo.net/forums" target="_blank">Forum</a>
-
-        <form style="display: inline; margin: 0;" action="http://www.satollo.net/wp-content/plugins/newsletter/do/subscribe.php" method="post" target="_blank">
-            Subscribe to satollo.net <input type="email" name="ne" required placeholder="Your email">
-            <input type="hidden" name="nr" value="comment-notifier">
-            <input type="submit" value="Go">
-        </form>
-        <!--
-        <a href="https://www.facebook.com/satollo.net" target="_blank"><img style="vertical-align: bottom" src="http://www.satollo.net/images/facebook.png"></a>
-        -->
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank"><img style="vertical-align: bottom" src="http://www.satollo.net/images/donate.png"></a>
-        <a href="http://www.satollo.net/donations" target="_blank">Even <b>1$</b> helps: read more</a>
-    </div>
-
     <h2>Comment Notifier</h2>
-    
+
     <p>
         <a href="http://www.satollo.net/plugins/comment-plus" target="_blank">Comment Plus</a> is an extended version of Comment Notifier with
         much more options, integrated Comment Image plugin and Smilies for your comments.
+    </p>
+
+    <p>
+        Consider a small <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5PHGDGNHAYLJ8" target="_blank">donation</a> and 
+        <a href="http://www.satollo.net/donations" target="_blank">discover why it is doubly important</a>.
+    </p>
+
+    <p>
+        <?php _e('Check out my other useful plugins', 'comment-notifier') ?>:
+        <a href="http://www.satollo.net/plugins/comment-plus?utm_source=comment-notifier&utm_medium=link&utm_campaign=comment-plus" target="_blank">Comment Plus</a>,
+        <a href="http://www.satollo.net/plugins/hyper-cache?utm_source=comment-notifier&utm_medium=link&utm_campaign=hyper-cache" target="_blank">Hyper Cache</a>,
+        <a href="http://www.thenewsletterplugin.com/?utm_source=comment-notifier&utm_medium=link&utm_campaign=newsletter" target="_blank">Newsletter</a>,
+        <a href="http://www.satollo.net/plugins/header-footer?utm_source=comment-notifier&utm_medium=link&utm_campaign=header-footer" target="_blank">Header and Footer</a>,
+        <a href="http://www.satollo.net/plugins/thumnbails?utm_source=comment-notifier&utm_medium=link&utm_campaign=thumbnails" target="_blank">Thumbnails</a>,
+        <a href="http://www.satollo.net/plugins/include-me?utm_source=comment-notifier&utm_medium=link&utm_campaign=include-me" target="_blank">Include Me</a>.
     </p>
 
     <form action="" method="post">
